@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>How to setup a static website with Hugo, Github and Cloudflare</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://ast3ro.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.37.1" />
+        
+        
+        
+    </head>
+
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">How to setup a static website with Hugo, Github and Cloudflare</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/ast3ro/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/ast3ro1/"><i class="fa fa-twitter"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/hugo-github-cloudflare_static_website/">How to setup a static website with Hugo, Github and Cloudflare</a></h4>
+    <h5>February 7, 2018</h5>
+    
+    <a href="https://ast3ro.github.iotags/hugo"><kbd class="item-tag">hugo</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/github"><kbd class="item-tag">github</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/static-website"><kbd class="item-tag">static-website</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/cloudflare"><kbd class="item-tag">cloudflare</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="what-we-re-going-to-build">What we&rsquo;re going to build</h2>
+
+<p>The idea here is to host a static website, generated locally with <a href="https://gohugo.io">Hugo</a>, deployed on Github and served via Cloudlare with SSL termination.</p>
+
+<ul>
+<li>Setup a local static site generator</li>
+<li>Have the sources tracked on github</li>
+<li>Serve the static site from a domain name - <a href="https://ast3ro.me">astr3ro.me</a></li>
+<li>Add SSL termination with <a href="https://www.cloudflare.com">Cloudflare</a></li>
+</ul>
+
+<p>So let&rsquo;s dive in.</p>
+
+<h2 id="static-site-generator">Static site generator</h2>
+
+<h3 id="initial-setup">Initial setup</h3>
+
+<ul>
+<li>Install and setup <a href="https://gohugo.io/getting-started/installing/">Hugo</a> on your local machine</li>
+<li>Create a new site</li>
+</ul>
+
+<pre><code class="language-bash">$ cd ~/
+$ hugo new site ast3ro.me
+$ cd ast3ro.me
+</code></pre>
+
+<p>Now go choose a theme here:</p>
+
+<ul>
+<li><a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a></li>
+</ul>
+
+<p>I like the minimal theme, so I&rsquo;ll add it as a git submodule:</p>
+
+<pre><code class="language-bash">$ git init # We first need to create a git repo so that we can add a submodule
+$ git submodule add https://github.com/calintat/minimal.git themes/minimal
+$ git submodule init
+$ git submodule update
+</code></pre>
+
+<p>Remember that you can get updates from the upstream with the following command:</p>
+
+<pre><code class="language-bash">$ git submodule update --remote themes/minimal
+</code></pre>
+
+<p>You can now copy the exampleSite that ships with the theme and start playing around:</p>
+
+<pre><code class="language-bash">$ cp themes/minimal/exampleSite/config.toml .
+</code></pre>
+
+<p>And now start serving your new site:</p>
+
+<pre><code class="language-bash">$ hugo serve
+</code></pre>
+
+<p>Head to <a href="http://localhost:1313">http://localhost:1313</a> and voilà! You should get your first static site generated by Hugo:</p>
+
+<p><img src="https://d33wubrfki0l68.cloudfront.net/a479f315add8475183670bf9648fda766758e7dd/896e2/minimal/minimal/screenshot-minimal_hu9e673888c1624bc4f017d4c7977ce18a_85974_750x500_fill_catmullrom_top_2.png" alt="Your first Hugo static site" /></p>
+
+<h3 id="create-some-content">Create some content</h3>
+
+<p>Now you can add articles with:</p>
+
+<pre><code class="language-bash">$ hugo new post/my-first-post.md
+</code></pre>
+
+<p>And you should get the post listed in the <strong>Posts</strong> section.</p>
+
+<hr />
+
+<h2 id="github-plumbing">Github plumbing</h2>
+
+<p>Now that you&rsquo;re happy with the very first iteration of your site, just commit everything to git</p>
+
+<pre><code class="language-bash">$ git commit -am &quot;Initial commit&quot;
+</code></pre>
+
+<p>Next, we&rsquo;re going to setup the git plumbery. Basically we&rsquo;re going to handle 2 repos:</p>
+
+<ul>
+<li>1 for the Hugo sources</li>
+<li>1 to serve the generated HTML files</li>
+</ul>
+
+<p>In my case, these 2 repos are:</p>
+
+<ul>
+<li><a href="https://github.com/ast3ro/ast3ro.me">ast3ro.me</a> for the sources</li>
+<li><a href="https://github.com/ast3ro/ast3ro.github.io">ast3ro.github.io</a> for the generated files</li>
+</ul>
+
+<h3 id="setup-generated-files-repo">Setup generated files repo</h3>
+
+<p>We&rsquo;ll handle the generated files repo as a submodule of our current repo. To do this:</p>
+
+<ul>
+<li>Stop serving Hugo pages with <kbd><Ctrl</kbd> + <kbd>C</kbd>.</li>
+</ul>
+
+<p>Then remove the <code>public</code> folder from your current repo:</p>
+
+<pre><code class="language-bash">$ rm -rf public
+</code></pre>
+
+<p>Then we&rsquo;ll add the public folder as a submodule of our current repo, then have it track its upstream:</p>
+
+<pre><code class="language-bash">$ git submodule add -b master git@github.com:&lt;USERNAME&gt;/&lt;USERNAME&gt;.github.io.git public
+</code></pre>
+
+<p>Now when you run the hugo command to build your site to public, the created public directory will have a different remote origin (i.e. hosted GitHub repository). You can automate some of these steps with the following script.</p>
+
+<h3 id="create-the-deploy-script">Create the deploy script</h3>
+
+<p>Create a new bash script that will be used to deploy your <code>public</code> folder on demand:</p>
+
+<pre><code class="language-bash">$ touch deploy.sh
+$ chmod +x deploy.sh
+$ vim deploy.sh
+</code></pre>
+
+<p>And put the following content:</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+hugo # if using a theme, replace with `hugo -t &lt;YOURTHEME&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add .
+
+# Commit changes.
+msg=&quot;Rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back up to the Project Root
+cd ..
+</code></pre>
+
+<p>Now test it with a new deploy:</p>
+
+<pre><code class="language-bash">$ ./deploy.sh &quot;Your optional commit message&quot;
+</code></pre>
+
+<p>Your changed should be instantly pushed to <code>&lt;USERNAME&gt;.github.io</code>.</p>
+
+<hr />
+
+<p>Create a new repo locally, named after the future github.io repository:</p>
+
+<pre><code class="language-bash">$ cd ~
+$ mkdir ast3ro.github.io &amp;&amp; cd &quot;$_&quot; # just cd right into the newly created folder
+$ git init .
+$ echo &quot;Initial commit&quot; &gt; README.md
+$ git commit -am &quot;Initial commit&quot;
+</code></pre>
+
+<p>Now head to Github, create a new repo to host the static content:</p>
+
+<p><img src="/images/create-a-new-repository-in-github.png" alt="Create a new repo in Github suffixed with github.io" /></p>
+
+<p>Next, plugin your current repo with this upstream repo:</p>
+
+<pre><code class="language-bash">$ git remote add origin git@github.com:ast3ro/ast3ro.github.io.git
+</code></pre>
+
+<p>If verything went fine, you should be able to push:</p>
+
+<pre><code class="language-bash">$ git push -u origin master
+</code></pre>
+
+<p>Now you should be able to visit the page you just created:</p>
+
+<p><a href="https://ast3ro.github.io/">https://ast3ro.github.io/</a></p>
+
+<h2 id="various-documentationc">Various documentationc</h2>
+
+<ul>
+<li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a></li>
+<li><a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/</a></li>
+</ul>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
