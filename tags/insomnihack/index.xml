@@ -19,7 +19,7 @@
       <guid>https://ast3ro.github.io/post/insomnihack-2018-ctf-writeup/</guid>
       <description>Introduction I had the chance to participate in the Insomni&amp;rsquo;hack 2018 CTF challenge held in Geneva with 3 friends on Friday, 23rd of March.
 The team was composed of 4 friends, forming a perfect team of newbies. We managed to get 2 flags in this contest and had partial solutions for some other tasks.
-Solved challenges  vba01-baby - warmup, PHuck  Challenges we spent some time on but did not solve  vba02-bitminer - web Authentication service - web backdoor - web, osint guessflag - pwn Spoke - network Some others&amp;hellip;  vba-01 - Baby We get an Excel file which surely contains macros, so we open it using Excel&amp;rsquo;s &amp;ldquo;Protected mode&amp;rdquo; in a Windows VM:</description>
+Solved challenges  vba01-baby - warmup PHuck - php  Challenges we spent some time on but did not solve  vba02-bitminer - web Authentication service - web backdoor - web, osint guessflag - pwn Spoke - network Some others&amp;hellip;  vba-01 - Baby We get an Excel file which surely contains macros, so we open it using Excel&amp;rsquo;s &amp;ldquo;Protected mode&amp;rdquo; in a Windows VM:</description>
     </item>
     
     <item>
@@ -30,7 +30,7 @@ Solved challenges  vba01-baby - warmup, PHuck  Challenges we spent some time on 
       <guid>https://ast3ro.github.io/post/insomnihack-2018-ctf-writeup/</guid>
       <description>Introduction I had the chance to participate in the Insomni&amp;rsquo;hack 2018 CTF challenge held in Geneva with 3 friends on Friday, 23rd of March.
 The team was composed of 4 friends, forming a perfect team of newbies. We managed to get 2 flags in this contest and had partial solutions for some other tasks.
-Solved challenges  vba01-baby - warmup, PHuck  Challenges we spent some time on but did not solve  vba02-bitminer - web Authentication service - web backdoor - web, osint guessflag - pwn Spoke - network Some others&amp;hellip;  vba-01 - Baby We get an Excel file which surely contains macros, so we open it using Excel&amp;rsquo;s &amp;ldquo;Protected mode&amp;rdquo; in a Windows VM:</description>
+Solved challenges  vba01-baby - warmup PHuck - php  Challenges we spent some time on but did not solve  vba02-bitminer - web Authentication service - web backdoor - web, osint guessflag - pwn Spoke - network Some others&amp;hellip;  vba-01 - Baby We get an Excel file which surely contains macros, so we open it using Excel&amp;rsquo;s &amp;ldquo;Protected mode&amp;rdquo; in a Windows VM:</description>
     </item>
     
   </channel>
