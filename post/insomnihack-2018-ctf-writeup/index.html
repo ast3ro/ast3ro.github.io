@@ -235,6 +235,13 @@
 
 <p>Oh crap&hellip; looks like we got our VM owned by the organizers ^_^ It seems this was part of the 3rd part of the vba challenge.</p>
 
+<h3 id="lessons-learned">Lessons learned</h3>
+
+<ul>
+<li>Don&rsquo;t enable macros ;)</li>
+<li>Always, always, always use a disposable environment when attending a CTF</li>
+</ul>
+
 <h2 id="phuck">PHuck</h2>
 
 <p>PHuck was a PHP challenge where the source was given:</p>
@@ -293,7 +300,7 @@
 <pre><code class="language-bash">$ curl -XPOST http://phuck.insomni.hack/?is.admin%00=1 -d '{&quot;userid&quot;: 0.1}'
 </code></pre>
 
-<h3 id="lessons-learned">Lessons learned</h3>
+<h3 id="lessons-learned-1">Lessons learned</h3>
 
 <ul>
 <li>In PHP, &ldquo;Dots and spaces in variable names are converted to underscores&rdquo;
@@ -449,7 +456,7 @@ $ diff jquery jquery-1.11.3.js
 
 <p>After this, I quite lost it and was unable to do any more on this challenge. I went to ask for a tiny hint to the organizers but the guy I talked to could only told me that there was something interesting in what I just told him, and that it was clearly on the server side, &ldquo;potentially linked to SQL injection&rdquo;&hellip;</p>
 
-<h3 id="lessons-learned-1">Lessons learned</h3>
+<h3 id="lessons-learned-2">Lessons learned</h3>
 
 <p>I should have sticked to my intuition of SQLi and go a step further by doinf a negative assertion: <code>a' or 1=0; --</code>. This would have proably helped understand this web service was vulnerable to blind boolean SQL injection.</p>
 
@@ -459,9 +466,13 @@ $ diff jquery jquery-1.11.3.js
 
 <p>This was a fun night! Overall, we found the challenges to be quite difficult but had lot of fun solving some of them or even just having parts of solutions.</p>
 
-<p>Some pictures</p>
+<p>The venue was really nice and the whole thing felt very well organized. We&rsquo;ll be happy to attend next year!</p>
+
+<p>Some pictures:</p>
 
 <p><img src="/images/ctf/2018/insomnihack/insomnihack.png" alt="Photo 1" /></p>
+
+<p><img src="/images/ctf/2018/insomnihack/panopti-hack.png" alt="Photo 2" /></p>
 </div>
 
     
