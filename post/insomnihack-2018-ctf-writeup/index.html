@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Insomnihack 2018 CTF Writeup</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://ast3ro.github.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.36" />
+        
+        
+        
+    </head>
+
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Insomnihack 2018 CTF Writeup</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="https://github.com/ast3ro/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/ast3ro1/"><i class="fa fa-twitter"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/insomnihack-2018-ctf-writeup/">Insomnihack 2018 CTF Writeup</a></h4>
+    <h5>March 24, 2018</h5>
+    
+    <a href="https://ast3ro.github.iotags/insomnihack"><kbd class="item-tag">insomni&#39;hack</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/insomnihack"><kbd class="item-tag">insomnihack</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/ctf"><kbd class="item-tag">ctf</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/2018"><kbd class="item-tag">2018</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/writeup"><kbd class="item-tag">writeup</kbd></a>
+    
+    <a href="https://ast3ro.github.iotags/phuck"><kbd class="item-tag">phuck</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I had the chance to participate in the <strong>Insomni&rsquo;hack 2018 CTF challenge</strong> held in Geneva with 3 friends on Friday, 23rd of March.</p>
+
+<p>The team was composed of 4 friends, forming a perfect team of newbies. We managed to get 2 flags in this contest and had partial solutions for some other tasks.</p>
+
+<h3 id="solved-challenges">Solved challenges</h3>
+
+<ul>
+<li><a href="#vba-01-baby">vba01-baby</a> - warmup,</li>
+<li><a href="#phuck">PHuck</a></li>
+</ul>
+
+<h3 id="challenges-we-spent-some-time-on-but-did-not-solve">Challenges we spent some time on but did not solve</h3>
+
+<ul>
+<li><a href="vba-02-bitminer">vba02-bitminer</a> - web</li>
+<li>Authentication service - <code>web</code></li>
+<li>backdoor - <code>web</code>, <code>osint</code></li>
+<li>guessflag - <code>pwn</code></li>
+<li>Spoke - <code>network</code></li>
+<li>Some others&hellip;</li>
+</ul>
+
+<h2 id="vba-01-baby">vba-01 - Baby</h2>
+
+<p>We get an Excel file which surely contains macros, so we open it using Excel&rsquo;s &ldquo;Protected mode&rdquo; in a Windows VM:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_01.png" alt="VBA01_01.png" /></p>
+
+<p>In order to view the macro, we need to &ldquo;Activate modification&rdquo;:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_02.png" alt="VBA01_02.png" /></p>
+
+<p>We can see that:</p>
+
+<ol>
+<li>the code is executed upon open (1)</li>
+<li>and that it writes something into the registry at the end (2)</li>
+</ol>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_04.png" alt="VBA01_04.png" /></p>
+
+<p>Let&rsquo;s use <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/procmon">ProcessMonitor</a>, my favorite tool from Sysinternals and create a filter to show only events from Excel:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_05.png" alt="VBA01_05.png" /></p>
+
+<p>Open again the Excel file, activating macros. See what it does:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_06.png" alt="VBA01_06.png" /></p>
+
+<p>It does a lot of registry requests. Let&rsquo;s filter on registry write events:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_07.png" alt="VBA01_07.png" /></p>
+
+<p>As we can see, there are two write operations:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_08.png" alt="VBA01_08.png" /></p>
+
+<p>It writes the flag in <strong>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</strong>:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_09.png" alt="VBA01_09.png" /></p>
+
+<p>That we can verify looking into the registry:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_11.png" alt="VBA01_11.png" /></p>
+
+<p>It also registers itself as a user&rsquo;s trusted document. With that, Excel will never ask to enable macros when this document will be opened again, so the malware code will be executed each time:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_10.png" alt="VBA01_10.png" /></p>
+
+<blockquote>
+<p>In order to prevent that kind of &ldquo;self registration&rdquo;, you can disable &ldquo;Trusted document&rdquo; support in all Office application&rsquo;s options</p>
+</blockquote>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/VBA01_12.png" alt="VBA01_12.png" /></p>
+
+<p>And voilà! This was our first flag.</p>
+
+<p>After a while, Fred noticed something <em>fun</em> in the VM&rsquo;s settings proxy settings:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba01-Baby/SecuN00b.proxy.png" alt="SecuN00b.proxy.png" /></p>
+
+<p>Oh crap&hellip; looks like we got our VM owned by the organizers ^_^</p>
+
+<h2 id="phuck">PHuck</h2>
+
+<p>PHuck was a PHP challenge where the source was given:</p>
+
+<pre><code class="language-php">&lt;?php
+    $dataset = [
+        0 =&gt; ['Blaklis', 'The flag is INS{snip}.'],
+        1 =&gt; ['Lambda guy', 'We don\'t have anything interesting to say'],
+        2 =&gt; ['Lambda guy 2', 'We still do not say anything interesting'],
+        3 =&gt; ['Lambda guy 3', 'PHP is the best language ever!']
+    ];
+
+
+    $block = (function($request) {
+        $blocked = FALSE;
+        $keywords = ['_', 'admin=', '\'', '&quot;', '[', ']', '\\', &quot; &quot;, chr(9),chr(10),chr(11),chr(12),chr(13),chr(133),chr(160),&quot;%&quot;];
+        foreach($keywords as $keyword)
+            if(strpos(urldecode($request),$keyword) !== FALSE)
+                $blocked = TRUE;
+        return ($_SERVER['REMOTE_ADDR'] === '127.0.0.1') ? FALSE : $blocked;
+    })($_SERVER['REQUEST_URI']);
+    !$block?:die('Die by the WAF!');
+    
+    if($_SERVER['REQUEST_METHOD'] === 'POST' &amp;&amp; $_GET['is_admin'] == 1) {
+        $data = str_replace(&quot; &quot;,&quot;&quot;,file_get_contents(&quot;php://input&quot;));
+        $datablock = (function($post_data) {
+            $blocked = (strlen($post_data) &gt; 30 || !($a = json_decode($post_data)));
+            return $blocked;
+        })($data);
+        !$datablock?:die('Die by the WAF!');
+        $a = (array)json_decode($data);
+
+        if(isset($a['userid']) &amp;&amp; ($a['userid'] != 0 || $_SERVER['REMOTE_ADDR'] === '127.0.0.1')) {
+            if(isset($dataset[$a['userid']])) {
+                echo &quot;It's name is &quot;.$dataset[$a['userid']][0].&quot; and he would like to say : &quot;.$dataset[$a['userid']][1];
+                exit;
+            }
+        }
+    }
+
+    die('Die by... nothing?');
+
+</code></pre>
+
+<p>From this source it was determined that there were 2 main constraints:</p>
+
+<ul>
+<li><code>$_GET['is_admin']</code> has to be evaluated to <code>1</code> but somehow we can&rsquo;t just call <a href="http://phuck.insomni.hack/?is_admin=1">http://phuck.insomni.hack/?is_admin=1</a></li>
+<li>Passed json must be below 30 chars length and has to contain a userid field that must have a value <code>!= 0</code> but somehow is evaluated as <code>0</code> when used in a table</li>
+</ul>
+
+<p>After around 1 hour of fiddling on these constraints, Mathieu managed to get it working&hellip;</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<pre><code class="language-bash">$ curl -XPOST http://phuck.insomni.hack/?is.admin%00=1 -d '{&quot;userid&quot;: 0.1}'
+</code></pre>
+
+<h3 id="lessons-learned">Lessons learned</h3>
+
+<ul>
+<li>In PHP, &ldquo;Dots and spaces in variable names are converted to underscores&rdquo;
+
+<ul>
+<li><a href="http://php.net/manual/en/language.variables.external.php">PHP Variables From External Sources official doc</a></li>
+</ul></li>
+<li>Null byte <code>%00</code> helped us escape the filter on <code>admin=</code>
+
+<ul>
+<li><code>$_GET['is_admin&lt;NUL&gt;'] = 1</code> is equivalent to <code>$_GET['is_admin'] = 1</code></li>
+</ul></li>
+<li>In PHP, when dealing with array keys, &ldquo;Floats are also cast to integers, which means that the fractional part will be truncated. E.g. the key 8.7 will actually be stored under 8&rdquo;
+
+<ul>
+<li><a href="http://php.net/manual/en/language.types.array.php">PHP Arrays official doc</a></li>
+</ul></li>
+</ul>
+
+<p><img src="/images/ctf/2018/insomnihack/PHuck/php-oddities.png" alt="PHP oddities" /></p>
+
+<p>Kudos to Matieu who solved this challenge alone and got us our second flag! Congratz!</p>
+
+<h2 id="vba-02-bitminer">vba-02 - Bitminer</h2>
+
+<p>Again, we were given a .xslx file containing a macro:</p>
+
+<p>We opened in Excel inside a Windows VM, this would generated a file called bitminer.txt. Let&rsquo;s try a <code>file</code> comand and see what it returns:</p>
+
+<pre><code class="language-bash">$ file bitminer.txt
+Dos 32bit executable... blabla bla bla
+</code></pre>
+
+<p>When executed, this exe would start then throw the following error:</p>
+
+<pre><code class="language-bash">C:\&gt;bitminer.exe
+[+] Launching...
+[.] Aborting, not enough power....
+</code></pre>
+
+<p><small>These are not the exact messages returned by the .exe.<br>I just reproduce from memory as I did not take any screenshot during the contest&hellip;</small></p>
+
+<p>Ok so let&rsquo;s see what is inside this little .exe with radare2:</p>
+
+<pre><code class="language-bash">$ r2 bitminer.exe
+ -- Use radare2! lemons included!
+[0x00000580]&gt; aaa # Analyse all
+[0x00000580]&gt; afl # Analyze functions list
+[0x00000580]&gt; iz  # Print strings
+[0x00000580]&gt; izz # Print more strings
+</code></pre>
+
+<p>Hummm this result is rather interesting:</p>
+
+<pre><code class="language-bash">user-agent:BitMiner ...; http://bitminer.insomni.hack...
+</code></pre>
+
+<p>From these strings we can assume 2 things:</p>
+
+<ul>
+<li>The exe communicates with a CC (Command &amp; Control server) located at <code>http://bitminer.insomni.hack</code></li>
+<li>The exe check whether the current machine is powerful enough to mine on</li>
+</ul>
+
+<p>Let&rsquo;s use burp in that Windows VM and interecept the http traffic!</p>
+
+<ul>
+<li>We need to setup a proxy at the OS level so that we&rsquo;re sure to capture all the http traffic</li>
+<li>We need to turn response intereception on otherwise we won&rsquo;t see what is returned by the web server</li>
+<li>Let&rsquo;s launch the .exe!</li>
+</ul>
+
+<p>We se the following request being made:</p>
+
+<pre><code>POST /?a=benchmark HTTP/1.1
+User-Agent: Bitcoin Mining $couter 0.1 Beta 1337
+Host: bitminer.insomni.hack
+Content-Length: 136
+Expect: 100-continue
+Connection: close
+
+eyJjaWQiOiJXNy1YNjQiLCJjcHUiOiJJbnRlbChSKSBDb3JlKFRNKSBpNy01NjAwVSBDUFUgQCAyLjYwR0h6IiwiZ3B1IjoiQ2FydGUgZ3JhcGhpcXVlIFZHQSBzdGFuZGFyZCJ9
+</code></pre>
+
+<p>Mmmm interesting post data! Wonder what it looks like inside. Let&rsquo;s see if that&rsquo;s base64 encoded:</p>
+
+<pre><code class="language-bash">$ echo -n &quot;eyJjaWQiOiJXNy1YNjQiLCJjcHUiOiJJbnRlbChSKSBDb3JlKFRNKSBpNy01NjAwVSBDUFUgQCAyLjYwR0h6IiwiZ3B1IjoiQ2FydGUgZ3JhcGhpcXVlIFZHQSBzdGFuZGFyZCJ9&quot; | base64 -d
+{&quot;cid&quot;:&quot;W7-X64&quot;,&quot;cpu&quot;:&quot;Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz&quot;,&quot;gpu&quot;:&quot;Carte graphique VGA standard&quot;}
+</code></pre>
+
+<p>Haha! Interesting. If we let the response go throught, here is the HTTP response:</p>
+
+<pre><code class="language-bash">pwaaa
+</code></pre>
+
+<p>Then the .exe exits with the following error message:</p>
+
+<pre><code class="language-bash">Not enough power...
+</code></pre>
+
+<p>So how could we let the exe to go a step further? Let&rsquo;s try and fake the graphic card in this VM and forge a request. Now is time for a wonderful query in Google images:</p>
+
+<blockquote>
+<p>Nvidia geforce device manager</p>
+</blockquote>
+
+<p><a href="https://www.google.com/search?q=nvidia+geforce+device+manager&amp;dcr=0&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwjG2sqx4YTaAhXCjCwKHTUSA4gQ_AUIDCgD&amp;biw=1920&amp;bih=1079">https://www.google.com/search?q=nvidia+geforce+device+manager&amp;dcr=0&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=0ahUKEwjG2sqx4YTaAhXCjCwKHTUSA4gQ_AUIDCgD&amp;biw=1920&amp;bih=1079</a></p>
+
+<p>And here we are:</p>
+
+<p><img src="/images/gtx-970-device-manager.gif" alt="Nvidia GeForce GTX 970" /></p>
+
+<p>So let&rsquo;s try this string as our base64 encoded payload:</p>
+
+<pre><code class="language-bash">$ echo -n '{&quot;cid&quot;:&quot;W7-X64&quot;,&quot;cpu&quot;:&quot;Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz&quot;,&quot;gpu&quot;:&quot;Nvidia GeForce GTX 970&quot;}' | base64
+eyJjaWQiOiJXNy1YNjQiLCJjcHUiOiJJbnRlbChSKSBDb3JlKFRNKSBpNy01NjAwVSBDUFUgQCAyLjYwR0h6IiwiZ3B1IjoiTnZpZGlhIEdlRm9yY2UgR1RYIDk3MCJ9
+</code></pre>
+
+<p>Now let&rsquo;s run the exe again but this time, when we intercept the request in Burp, let&rsquo;s alter the query so that we send our payload instead:</p>
+
+<p>Now the response is différent:</p>
+
+<pre><code>go
+</code></pre>
+
+<p>Ha! So we managed to fake our graphic card and now the exe goes one step further!</p>
+
+<p>Unfortunately, from this point, we did not know what to do, but I had the intuition that we could SQLI inject in the <code>a</code> parameter when the bitminer.exe calls his CC.</p>
+
+<p>So I first tried the simplest SQL injection: <code>a' or 1=1; --</code> and it did return <code>go</code>. I should have paid more attention to this result and try <code>1=0</code> instead, but did not think about this as it was already 3 AM.</p>
+
+<p>I also tried to craft a cheap <strong>SQLmap</strong> using a SQLi <em>dictionary</em>. Here&rsquo;s the PHP script I came up with:</p>
+
+<p><img src="/images/ctf/2018/insomnihack/vba02-bitminer/failed-sqli-bruteforce.png" alt="failed-sqli-bruteforce.png" /></p>
+
+<p>Then I switched to enumerate folders on the server. Using <a href="https://github.com/xmendez/wfuzz">wfuzz</a> and some dictionnaries, I found a couple <em>interesting ones</em></p>
+
+<pre><code>/javascript               # Folder
+/javascript/jquery        # Folder
+/javascript/jquery/jquery # File
+</code></pre>
+
+<p>mmmmm, interesting, why would a CC have jquery hosted unless it&rsquo;s for some sort of admin dashboard I wondered. Maybe it was also for the thirst stage of the challenge since there was a vba03 task&hellip;</p>
+
+<p>I also wondered if the jquery file could not contain anything <em>unusual</em>&hellip; so I downloaded the file and compared it against an original version (v1.11.3):</p>
+
+<pre><code>$ wget http://bitminer.insomni.hack/javascript/jquery/jquery
+$ wget https://code.jquery.com/jquery-1.11.3.js
+$ diff jquery jquery-1.11.3.js
+</code></pre>
+
+<p>Unfortunately, there was nothing special except a difference on the date of generation of the files, this was probably a wrong lead.</p>
+
+<p>After this, I quite lost it and was unable to do any more on this challenge. I went to ask for a tiny hint to the organizers but the guy I talked to could only told me that there was something interesting in what I just told him, and that it was clearly on the server side, &ldquo;potentially linked to SQL injection&rdquo;&hellip;</p>
+
+<h3 id="lessons-learned-1">Lessons learned</h3>
+
+<p>I should have sticked to my intuition of SQLi and go a step further by doinf a negative assertion: <code>a' or 1=0; --</code>. This would have proably helped understand this web service was vulnerable to blind boolean SQL injection.</p>
+
+<p>Maybe next time!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This was a fun night! Overall, we found the challenges to be quite difficult but had lot of fun solving some of them or even just having parts of solutions.</p>
+
+<p>Some pictures</p>
+
+<p><img src="/images/ctf/2018/insomnihack/insomnihack.png" alt="Photo 1" /></p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

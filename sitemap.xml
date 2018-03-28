@@ -3,12 +3,29 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ast3ro.github.io/post/insomnihack-2018-ctf-writeup/</loc>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ast3ro.github.io/post/hello-world/</loc>
     <lastmod>2018-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://ast3ro.github.io/tags/2018/</loc>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ast3ro.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ast3ro.github.io/tags/ctf/</loc>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -19,20 +36,38 @@
   </url>
   
   <url>
+    <loc>https://ast3ro.github.io/tags/insomnihack/</loc>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ast3ro.github.io/tags/phuck/</loc>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ast3ro.github.io/post/</loc>
-    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ast3ro.github.io/tags/</loc>
-    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ast3ro.github.io/tags/writeup/</loc>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ast3ro.github.io/</loc>
-    <lastmod>2018-02-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-24T11:17:43+01:00</lastmod>
     <priority>0</priority>
   </url>
   

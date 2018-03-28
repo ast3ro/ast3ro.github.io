@@ -6,10 +6,21 @@
     <description>Recent content on ast3ro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Mar 2018 11:17:43 +0100</lastBuildDate>
     
 	<atom:link href="https://ast3ro.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Insomnihack 2018 CTF Writeup</title>
+      <link>https://ast3ro.github.io/post/insomnihack-2018-ctf-writeup/</link>
+      <pubDate>Sat, 24 Mar 2018 11:17:43 +0100</pubDate>
+      
+      <guid>https://ast3ro.github.io/post/insomnihack-2018-ctf-writeup/</guid>
+      <description>Introduction I had the chance to participate in the Insomni&amp;rsquo;hack 2018 CTF challenge held in Geneva with 3 friends on Friday, 23rd of March.
+The team was composed of 4 friends, forming a perfect team of newbies. We managed to get 2 flags in this contest and had partial solutions for some other tasks.
+Solved challenges  vba01-baby - warmup, PHuck  Challenges we spent some time on but did not solve  vba02-bitminer - web Authentication service - web backdoor - web, osint guessflag - pwn Spoke - network Some others&amp;hellip;  vba-01 - Baby We get an Excel file which surely contains macros, so we open it using Excel&amp;rsquo;s &amp;ldquo;Protected mode&amp;rdquo; in a Windows VM:</description>
+    </item>
     
     <item>
       <title>Hello, world!</title>

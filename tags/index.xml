@@ -6,10 +6,28 @@
     <description>Recent content in Tags on ast3ro</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Mar 2018 11:17:43 +0100</lastBuildDate>
     
 	<atom:link href="https://ast3ro.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018</title>
+      <link>https://ast3ro.github.io/tags/2018/</link>
+      <pubDate>Sat, 24 Mar 2018 11:17:43 +0100</pubDate>
+      
+      <guid>https://ast3ro.github.io/tags/2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ctf</title>
+      <link>https://ast3ro.github.io/tags/ctf/</link>
+      <pubDate>Sat, 24 Mar 2018 11:17:43 +0100</pubDate>
+      
+      <guid>https://ast3ro.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Helloworld</title>
@@ -17,6 +35,33 @@
       <pubDate>Tue, 06 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://ast3ro.github.io/tags/helloworld/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Insomnihack</title>
+      <link>https://ast3ro.github.io/tags/insomnihack/</link>
+      <pubDate>Sat, 24 Mar 2018 11:17:43 +0100</pubDate>
+      
+      <guid>https://ast3ro.github.io/tags/insomnihack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Phuck</title>
+      <link>https://ast3ro.github.io/tags/phuck/</link>
+      <pubDate>Sat, 24 Mar 2018 11:17:43 +0100</pubDate>
+      
+      <guid>https://ast3ro.github.io/tags/phuck/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Writeup</title>
+      <link>https://ast3ro.github.io/tags/writeup/</link>
+      <pubDate>Sat, 24 Mar 2018 11:17:43 +0100</pubDate>
+      
+      <guid>https://ast3ro.github.io/tags/writeup/</guid>
       <description></description>
     </item>
     
